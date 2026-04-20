@@ -24,3 +24,7 @@ SELECT *
 FROM order_info
 ORDER BY date_gap DESC
 
+
+--BUSINESS QUESTION 2. Employee Performance Dashboard*
+--For each employee: total orders handled, total revenue generated, average order value, rank by revenue.
+--Techniques: CTE + JOIN + RANK() window function
