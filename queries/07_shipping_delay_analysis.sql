@@ -1,9 +1,6 @@
---BUSINESS QUESTION 7.Shipping delay analysis by country
---Which countries experience the longest delivery times? Where are fulfillment bottlenecks occurring?
-/*CTE
-AVG()
-DATE diff
-Operations*/
+-- BUSINESS QUESTION: Which countries experience the longest delivery times? Where are fulfillment bottlenecks occurring?
+-- Techniques: CTE-AVG()-Operations*/
+-- Finding: 7.Shipping delay analysis by country
 
 
 SELECT ship_country,
@@ -13,4 +10,4 @@ SELECT ship_country,
 FROM orders
 WHERE shipped_date IS NOT NULL
 GROUP BY ship_country
-ORDER BY AVG_day_to_ship DESC
+ORDER BY AVG_day_to_ship DESC;

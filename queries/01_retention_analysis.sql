@@ -1,6 +1,7 @@
---BUSINESS QUESTION 1. Customer Retention Analysis*
---Which customers ordered more than once? What's the gap between their first and last order?
+-- BUSINESS QUESTION  Which customers ordered more than once? What's the gap between their first and last order?
 -- Techniques: CTE + MIN() / MAX() + HAVING
+-- Finding : Q1 Customer Retention Analysis
+
 
 
  WITH order_info AS (

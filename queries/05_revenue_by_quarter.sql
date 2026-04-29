@@ -1,10 +1,7 @@
--- BUSINESS QUESTION 5. Revenue by Quarter*
--- Hint:
---EXTRACT(YEAR FROM order_date) AS year,
---EXTRACT(QUARTER FROM order_date) AS quarter
---Include: quarter-over-quarter % change using LAG().
---Techniques: EXTRACT + CTE + LAG() window function
-
+-- BUSINESS QUESTION : Revenue by Quarter
+-- Include: quarter-over-quarter % change using LAG().
+-- Techniques: EXTRACT + CTE + LAG() window function
+-- Finding: Q5 product revenue by quarter
 WITH quarter_revenue AS(
 SELECT
     ROUND((SUM(od.unit_price * od.quantity - od.discount)) :: NUMERIC, 2)AS total_revenue,

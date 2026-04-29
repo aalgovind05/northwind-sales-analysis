@@ -1,7 +1,6 @@
--- BUSINESS QUESTION 6.Employee & Operational Performance
---Employee performance vs team average
---Which employees are above average performers? Who needs coaching based on revenue generated?
-
+-- BUSINESS QUESTION: Employee performance vs team average
+-- Techniques: CTE, CROSS JOIN, AVG()
+-- Finding: 6 Employee & Operational Performance
 
 WITH employee_revenue AS(
     SELECT 
@@ -17,7 +16,7 @@ WITH employee_revenue AS(
 
 avg_team_revenue AS
 (SELECT
-AVG(emp_total_revenue) AS team_revenue
+ROUND(AVG(emp_total_revenue):: NUMERIC,2) AS team_revenue
 FROM employee_revenue)
 
 SELECT employee_name,
