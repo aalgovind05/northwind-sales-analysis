@@ -137,6 +137,10 @@ In my setup the Northwind schema is restored into PostgreSQL and I run all analy
 
 ```text
 northwind-sales-analysis/
+├── data/
+│   └── northwind.sql     # SQL file to restore the Northwind database
+├── images/               # ERD and other visuals
+│   └── northwind_erd.png
 ├── insights/              # Notes and written insights from the analysis
 ├── queries/               # SQL scripts for each business question
 ├── .vscode/               # Editor configuration (optional)
