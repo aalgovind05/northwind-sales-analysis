@@ -21,26 +21,14 @@ Everything is done only with SQL using PostgreSQL and pgAdmin.
 
 | # | Question | Technique used | Query file |
 |---|----------|----------------|------------|
-| 1 | Customer Retention Analysis
-Which customers ordered more than once? What's the gap between their first and last order?| CTE + MIN() / MAX() + HAVING | `queries/01_customer_retention.sql` |
-| 2 | Employee Performance Dashboard 
-For each employee: total orders handled, total revenue generated, average order value, rank by revenue.|  CTE + JOIN + RANK() window function| `queries/02_employee_performance.sql` |
-| 3 | Product Restock Alert 
-Products with stock below 15 units that still have active orders in the last 6 months. | JOIN + WHERE + date filtering + CASE WHEN for urgency label| `queries/03_product_restock.sql` |
-| 4 | Late Delivery Analysis 
-Orders where actual delivery (shipped_date) exceeded the required date (required_date). Calculate how many days late.| Multi-table JOIN + date arithmetic + WHERE| `queries/04_late_delivery.sql` |
-| 5 | Revenue by Quarter | Calculate quarterly revenue and percentage change from the previous quarter. | EXTRACT + CTE + LAG() window function| `queries/05_revenue_by_quarter.sql` |
-| 06 | Employee performance vs team average
-Which employees are above average performers? Who needs coaching based on revenue generated? |
-CTE+ CROSS JOIN+AVG()| `queries/06_employee_performance.sql` |
-| 07 | Shipping delay analysis by country
-Which countries experience the longest delivery times? Where are fulfillment bottlenecks occurring?|
-CTE+ JOIN + date diff + GROUP BY| `queries/07_shipping_delay_analysis.sql` |
-| 08 | Product revenue share & running total
-What % of total revenue does each product contribute? Which products cumulatively make up the first 50% of revenue? |
-CTE+SUM() OVER()+ROUND()+% calculation| `queries/08_product_revenue_share.sql` |
-
-
+| 1 | Customer retention analysis – which customers ordered more than once and what is the gap between their first and last order? | CTE + `MIN()` / `MAX()` + `HAVING` | `queries/01_customer_retention.sql` |
+| 2 | Employee performance dashboard – for each employee: total orders handled, total revenue generated, average order value, rank by revenue. | CTE + `JOIN` + `RANK()` window function | `queries/02_employee_performance.sql` |
+| 3 | Product restock alert – products with stock below 15 units that still have active orders in the last 6 months. | `JOIN` + `WHERE` + date filtering + `CASE WHEN` for urgency label | `queries/03_product_restock.sql` |
+| 4 | Late delivery analysis – orders where actual delivery (`shipped_date`) exceeded the required date (`required_date`), including how many days late. | multi-table `JOIN` + date arithmetic + `WHERE` | `queries/04_late_delivery.sql` |
+| 5 | Revenue by quarter – calculate quarterly revenue and percentage change from the previous quarter. | `EXTRACT` + CTE + `LAG()` window function | `queries/05_revenue_by_quarter.sql` |
+| 6 | Employee performance vs team average – which employees are above average performers and who needs coaching based on revenue generated? | CTE + `CROSS JOIN` + `AVG()` | `queries/06_employee_performance.sql` |
+| 7 | Shipping delay analysis by country – which countries experience the longest delivery times and where are fulfillment bottlenecks? | CTE + `JOIN` + date difference + `GROUP BY` | `queries/07_shipping_delay_analysis.sql` |
+| 8 | Product revenue share & running total – what % of total revenue does each product contribute and which products cumulatively make up the first 50% of revenue? | CTE + `SUM() OVER()` + `ROUND()` + percentage calculation | `queries/08_product_revenue_share.sql` |
 
 ---
 
@@ -162,8 +150,9 @@ northwind-sales-analysis/
 ## How to Run
 
 1. Install PostgreSQL (15 or compatible) and pgAdmin 4.  
-2. Restore the Northwind database into PostgreSQL using your Northwind SQL dump  
-   (for example: `data/NORTHWIND-SALES-ANALYSIS.sql` if you add it to this repo).  
+2. Restore the Northwind database into PostgreSQL using the SQL file in the data folder:  
+   - File: `data/northwind.sql`  
+   - In pgAdmin: create a new database (for example `northwind`), open `data/northwind.sql`, and run the script to create tables and load data.  
 3. Open pgAdmin 4 and connect to your PostgreSQL server.  
 4. Open the SQL files in the `queries` folder.  
 5. Run the queries in order (`01_*.sql` to `08_*.sql`) to answer each business question.  
